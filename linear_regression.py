@@ -18,8 +18,8 @@ data = pd.read_csv('/Users/devshah/Documents/WorkSpace/CS Projects/Linear Regres
 def loss_function(m, b, points):
     total_error = 0
     for i in range(len(points)):
-        x = points.iloc[i].studytime
-        y = points.iloc[i].score
+        x = points.loc[i].studytime
+        y = points.loc[i].score
         total_error += (y - (m*x + b)) **2 
     total_error / float(len(points))
     
@@ -30,8 +30,8 @@ def gradient_descent(m_now, b_now, points, learning_rate):
     n = len(points)
     
     for i in range(n):
-        x = points.iloc[i].studytime
-        y = points.iloc[i].score
+        x = points.loc[i].studytime
+        y = points.loc[i].score
         m_gradient += -(2/n) * x * (y -(m_now * x + b_now))
         b_gradient += -(2/n) * (y -(m_now * x + b_now))
         
@@ -51,5 +51,6 @@ print(m,b)
 
 plt.scatter(data.studytime, data.score, color='black')
 plt.plot(list(range(1, 10)), [m*x + b for x in range(1,10)], color='red')
+plt.show()
 
         
