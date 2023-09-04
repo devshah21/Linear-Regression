@@ -8,3 +8,18 @@
 # we can do that by taking the partial derivative w.r.t to m and b
 # that gives us the direction of steepest ascent 
 # refer to the image in the repo for the math
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv('/Users/devshah/Documents/WorkSpace/CS Projects/Linear Regression/Student Study Hour V2.csv')
+
+
+def loss_function(m, b, points):
+    total_error = 0
+    for i in range(len(points)):
+        x = points.iloc[i].studytime
+        y = points.iloc[i].score
+        total_error += (y - (m*x + b)) **2 
+    total_error / float(len(points))
+        
